@@ -13,11 +13,6 @@ resource "aws_s3_bucket" "remote-state" {
       }
     }
   }
-
-  tags {
-    Name = "terraform remote state"
-    Env = "${var.env}"
-  }
 }
 
 resource "aws_dynamodb_table" "remote-state" {
@@ -29,10 +24,5 @@ resource "aws_dynamodb_table" "remote-state" {
   attribute {
     name = "LockID"
     type = "S"
-  }
-
-  tags {
-    Name = "terraform remote state lock"
-    Env = "${var.env}"
   }
 }
